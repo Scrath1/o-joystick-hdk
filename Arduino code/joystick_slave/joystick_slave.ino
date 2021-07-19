@@ -3,11 +3,6 @@
 
 // Define Slave I2C Address
 #define SLAVE_ADDR 9
-// Define Slave answer size
-#define ANSWERSIZE 128
-// Define how many byte/char of the readout string are transmitted in one package.
-// Values higher than 27 cause the string to not be detected from the master for some reason
-#define PACKAGE_MESSAGE_LENGTH 27
 // Define pins used for buttons
 #define thumbstick1 A0
 #define thumbstick2 A1
@@ -47,17 +42,17 @@ void loop() {
   msgBuffer.data.brakeButton_val=digitalRead(brakeButton);
   msgBuffer.data.topSideButton_val=digitalRead(topSideButton);
   msgBuffer.data.pinkyButton_val=digitalRead(pinkyButton);
-  /*
-  Serial.println("TS1:" + msgBuffer.data.thumbstick1_val);
-  Serial.println("TS2:" + msgBuffer.data.thumbstick2_val);
-  Serial.println("topH1:" + msgBuffer.data.topHat1_val);
-  Serial.println("topH2:" + msgBuffer.data.topHat2_val);
-  Serial.println("thumbH1:" + msgBuffer.data.thumbHat1_val);
-  Serial.println("thumbH2:" + msgBuffer.data.thumbHat2_val);
-  Serial.println("trigger:" + msgBuffer.data.triggerButtons_val);
-  Serial.println("brake:" + msgBuffer.data.brakeButton_val);
-  Serial.println("topSide:" + msgBuffer.data.topSideButton_val);
-  Serial.println("pinky:" + msgBuffer.data.pinkyButton_val);*/
+  
+//  Serial.println("TS1:" + msgBuffer.data.thumbstick1_val);
+//  Serial.println("TS2:" + msgBuffer.data.thumbstick2_val);
+//  Serial.println("topH1:" + msgBuffer.data.topHat1_val);
+//  Serial.println("topH2:" + msgBuffer.data.topHat2_val);
+//  Serial.println("thumbH1:" + msgBuffer.data.thumbHat1_val);
+//  Serial.println("thumbH2:" + msgBuffer.data.thumbHat2_val);
+//  Serial.println("trigger:" + msgBuffer.data.triggerButtons_val);
+//  Serial.println("brake:" + msgBuffer.data.brakeButton_val);
+//  Serial.println("topSide:" + msgBuffer.data.topSideButton_val);
+//  Serial.println("pinky:" + msgBuffer.data.pinkyButton_val);
 }
 
 void requestEvent(){
