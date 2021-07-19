@@ -9,6 +9,13 @@
 // only 2 hat switches supported but I want to use 3. Therefore I actually have 12 buttons instead of 8
 #define HAT_SWITCH_AMOUNT 2
 
+
+#define X_AXIS_PIN A4
+#define Y_AXIS_PIN A5
+int xAxis, yAxis;
+bool invertYAxis = true;
+bool invertXAxis = true;
+
 // data received from slave
 Btn_Meta_t msgBuffer = {0};
 // hidReportId, joystickType, amount of buttons, hatswitchcount, XAxis, YAxis, ZAxis, RxAxis, RyAxis, RzAxis, Rudder, Throttle, Accelerator, Brake, Steering
@@ -26,6 +33,8 @@ int topLHat[4], topRHat[4], thumbHat[4];
 void setup() {
   Wire.begin();
   Serial.begin(9600);
+  xAxis=0;
+  yAxis=0;
   // init button arrays
   for(int i=0;i<BTN_AMOUNT;++i){
      //lastButtonState[i]=0; 
@@ -43,6 +52,14 @@ void setup() {
 void loop() {
   getSlaveData();
   mapDataToArray();
+  xAxis=analogRead(X_AXIS_PIN);
+  if(invertXAxis){
+    xAxis = map(xAxis, 0, 1023, 1023, 0);
+  }
+  yAxis=analogRead(Y_AXIS_PIN);
+  if(invertYAxis){
+    yAxis = map(yAxis, 0, 1023, 1023, 0);
+  }
   // send button states
   for(int i=0;i<BTN_AMOUNT;++i){
     Joystick.setButton(i, currentBtnState[i]);
@@ -54,6 +71,9 @@ void loop() {
   // send hatswitch states
   Joystick.setHatSwitch(0, hatSwitchToHeading(topRHat));
   Joystick.setHatSwitch(1, hatSwitchToHeading(thumbHat));
+  // set axis
+  Joystick.setXAxis(xAxis);
+  Joystick.setYAxis(yAxis);
 }
 
 int hatSwitchToHeading(int* hatSwitchArray){
