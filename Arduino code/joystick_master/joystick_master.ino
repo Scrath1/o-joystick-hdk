@@ -10,11 +10,11 @@
 #define HAT_SWITCH_AMOUNT 2
 
 
-#define X_AXIS_PIN A4
-#define Y_AXIS_PIN A5
+#define X_AXIS_PIN A5
+#define Y_AXIS_PIN A4
 int xAxis, yAxis;
-bool invertYAxis = true;
-bool invertXAxis = true;
+bool invertYAxis = false;
+bool invertXAxis = false;
 
 // data received from slave
 Btn_Meta_t msgBuffer = {0};
