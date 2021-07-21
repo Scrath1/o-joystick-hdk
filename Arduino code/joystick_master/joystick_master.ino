@@ -13,13 +13,22 @@
 #define X_AXIS_PIN A5
 #define Y_AXIS_PIN A4
 int xAxis, yAxis;
-bool invertYAxis = false;
-bool invertXAxis = false;
+const int xCenter = 494;
+const int yCenter = 524;
+const bool invertXAxis = false;
+const bool invertYAxis = false;
+const bool overwriteXCenter = true;
+const bool overwriteYCenter = true;
+const bool invertRxAxis = false;
+const bool invertRyAxis = true;
+
+// I/O actions take quiet long so this should only be enabled during debugging
+const bool printStatus = false;
 
 // data received from slave
 Btn_Meta_t msgBuffer = {0};
 // hidReportId, joystickType, amount of buttons, hatswitchcount, XAxis, YAxis, ZAxis, RxAxis, RyAxis, RzAxis, Rudder, Throttle, Accelerator, Brake, Steering
-Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK, BTN_AMOUNT+4, HAT_SWITCH_AMOUNT, true, true, false, false, false, false, false, false, false, false, false);
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK, BTN_AMOUNT+4, HAT_SWITCH_AMOUNT, true, true, false, true, true, false, false, false, false, false, false);
 
 // [0 brake, 1 pinky, 2 trigger0, 3 trigger1,
 // 4 thumbHatPress, 5 topSide, 6 joystickPress, 7 topLeftButton]
@@ -45,35 +54,76 @@ void setup() {
     topRHat[i]=0;
     thumbHat[i]=0;
   }
-  Serial.println("I2C Joystick Master Start");
-  Joystick.begin();
+  if(printStatus) Serial.println("I2C Joystick Master Start");
+  Joystick.begin(false);
 }
 
 void loop() {
+  const int BUFFERSIZE = 5;
+  int xBuf[BUFFERSIZE];
+  int yBuf[BUFFERSIZE];
   getSlaveData();
+  xBuf[0]=analogRead(X_AXIS_PIN);
+  yBuf[0]=analogRead(Y_AXIS_PIN);
   mapDataToArray();
-  xAxis=analogRead(X_AXIS_PIN);
-  if(invertXAxis){
-    xAxis = map(xAxis, 0, 1023, 1023, 0);
-  }
-  yAxis=analogRead(Y_AXIS_PIN);
-  if(invertYAxis){
-    yAxis = map(yAxis, 0, 1023, 1023, 0);
-  }
+  xBuf[1]=analogRead(X_AXIS_PIN);
+  yBuf[1]=analogRead(Y_AXIS_PIN);
   // send button states
   for(int i=0;i<BTN_AMOUNT;++i){
     Joystick.setButton(i, currentBtnState[i]);
   }
+  xBuf[2]=analogRead(X_AXIS_PIN);
+  yBuf[2]=analogRead(Y_AXIS_PIN);
   // top left hatswitch is used as normal buttons
   for(int i=BTN_AMOUNT;i<(BTN_AMOUNT+4);++i){
     Joystick.setButton(i, topLHat[i-BTN_AMOUNT]);
   }
+  xBuf[3]=analogRead(X_AXIS_PIN);
+  yBuf[3]=analogRead(Y_AXIS_PIN);
   // send hatswitch states
   Joystick.setHatSwitch(0, hatSwitchToHeading(topRHat));
   Joystick.setHatSwitch(1, hatSwitchToHeading(thumbHat));
+
+  
+  xBuf[4]=analogRead(X_AXIS_PIN);
+  yBuf[4]=analogRead(Y_AXIS_PIN);
+  // calculate axis average
+  yAxis=0;
+  xAxis=0;
+  for(int i=0; i<BUFFERSIZE;++i){
+      yAxis+=yBuf[i];
+      xAxis+=xBuf[i];
+  }
+  yAxis=(double)yAxis/BUFFERSIZE;
+  xAxis=(double)xAxis/BUFFERSIZE;
+  // axis adjustments
+  if(invertXAxis){
+    xAxis = map(xAxis, 0, 1023, 1023, 0);
+  }
+  if(overwriteXCenter){
+    if(xAxis<=xCenter) xAxis = map(xAxis, 0, xCenter, 0, 512);
+    if(xAxis>xCenter)  xAxis = map(xAxis, xCenter, 1023, 513, 1023);
+  }
+  
+  if(invertYAxis){
+    yAxis = map(yAxis, 0, 1023, 1023, 0);
+  }
+  if(overwriteYCenter){
+    if(yAxis<=yCenter) yAxis = map(yAxis, 0, yCenter, 0, 512);
+    if(yAxis>yCenter)  yAxis = map(yAxis, yCenter, 1023, 513, 1023);  
+  }
   // set axis
   Joystick.setXAxis(xAxis);
   Joystick.setYAxis(yAxis);
+  int rXAxis = msgBuffer.data.thumbstick2_val;
+  int rYAxis = msgBuffer.data.thumbstick1_val;
+  if(invertRxAxis) rXAxis = map(rXAxis, 0, 1023, 1023, 0);
+  if(invertRyAxis) rYAxis = map(rYAxis, 0, 1023, 1023, 0);
+  Joystick.setRxAxis(rXAxis);
+  Joystick.setRyAxis(rYAxis);
+
+  // send updated joystick data to pc
+  Joystick.sendState();
   printAxisState();
 }
 
@@ -91,12 +141,16 @@ void mapDataToArray(){
   // [0 brake, 1 pinky, 2 trigger0, 3 trigger1,
   // 4 thumbHatPress, 5 topSide, 6 joystickPress, 7 topLeftButton]
 
+  // index button mapping
+  // [0 trigger0, 1 trigger1, 2 brake, 3 pinky,
+  // 4 thumbHatPress, 5 topSide, 6 joystickPress, 7 topLeftButton]
+
   // single pin buttons
   // ===============================================================
   
   // pinky and brake are accidentally swapped on the slave arduino
-  currentBtnState[0]=invBtnState(msgBuffer.data.pinkyButton_val);
-  currentBtnState[1]=invBtnState(msgBuffer.data.brakeButton_val);
+  currentBtnState[2]=invBtnState(msgBuffer.data.pinkyButton_val);
+  currentBtnState[3]=invBtnState(msgBuffer.data.brakeButton_val);
   currentBtnState[5]=invBtnState(msgBuffer.data.topSideButton_val);
 
   
@@ -132,8 +186,8 @@ void mapDataToArray(){
    */             
   // trigger
   int trg = msgBuffer.data.triggerButtons_val;
-  currentBtnState[2]=(trg<1000);
-  currentBtnState[3]=(trg<256);
+  currentBtnState[0]=(trg<1000);
+  currentBtnState[1]=(trg<256);
   
   int th1 = msgBuffer.data.topHat1_val;
   currentBtnState[7] = (th1<256);
@@ -160,7 +214,8 @@ void mapDataToArray(){
 }
 
 void printAxisState(){
-  Serial.println("X:"+String(xAxis)+"\nY:"+String(yAxis));  
+  if(printStatus) Serial.println("X:"+String(xAxis)+"\nY:"+String(yAxis));  
+  
 }
 
 int invBtnState(int state){
@@ -173,14 +228,14 @@ void getSlaveData(){
   uint32_t dataReceived = 0;
   if(dataReceived == 0) {
     Wire.requestFrom(SLAVE_ADDR, sizeof(msgBuffer.rawData));
-    Serial.println("Requested data");
+    if(printStatus) Serial.println("Requested data");
     }
 
   while(Wire.available() && dataReceived < sizeof(msgBuffer.rawData)){
     msgBuffer.rawData[dataReceived++] = Wire.read();
     }
   if(dataReceived==sizeof(msgBuffer.rawData)){
-    Serial.println("Data transfer complete");
+    if(printStatus) Serial.println("Data transfer complete");
     //printBtn_Meta_t(msgBuffer);
     }
 }
