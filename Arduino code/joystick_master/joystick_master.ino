@@ -74,6 +74,7 @@ void loop() {
   // set axis
   Joystick.setXAxis(xAxis);
   Joystick.setYAxis(yAxis);
+  printAxisState();
 }
 
 int hatSwitchToHeading(int* hatSwitchArray){
@@ -158,6 +159,10 @@ void mapDataToArray(){
   thumbHat[1] = (thu1>256 && thu1<1000);
 }
 
+void printAxisState(){
+  Serial.println("X:"+String(xAxis)+"\nY:"+String(yAxis));  
+}
+
 int invBtnState(int state){
   if(state) return 0;
   return 1;
@@ -168,14 +173,14 @@ void getSlaveData(){
   uint32_t dataReceived = 0;
   if(dataReceived == 0) {
     Wire.requestFrom(SLAVE_ADDR, sizeof(msgBuffer.rawData));
-    Serial.println("Requested Message");
+    Serial.println("Requested data");
     }
 
   while(Wire.available() && dataReceived < sizeof(msgBuffer.rawData)){
     msgBuffer.rawData[dataReceived++] = Wire.read();
     }
   if(dataReceived==sizeof(msgBuffer.rawData)){
-    Serial.println("data transfer complete");
-    printBtn_Meta_t(msgBuffer);
+    Serial.println("Data transfer complete");
+    //printBtn_Meta_t(msgBuffer);
     }
 }
