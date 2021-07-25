@@ -13,8 +13,9 @@
 #define X_AXIS_PIN A5
 #define Y_AXIS_PIN A4
 int xAxis, yAxis;
-const int xCenter = 494;
+const int xCenter = 492;
 const int yCenter = 524;
+const int deadzone = 10;
 const bool invertXAxis = false;
 const bool invertYAxis = false;
 const bool overwriteXCenter = true;
@@ -96,21 +97,36 @@ void loop() {
   }
   yAxis=(double)yAxis/BUFFERSIZE;
   xAxis=(double)xAxis/BUFFERSIZE;
+  printAxisState();
   // axis adjustments
   if(invertXAxis){
     xAxis = map(xAxis, 0, 1023, 1023, 0);
   }
   if(overwriteXCenter){
-    if(xAxis<=xCenter) xAxis = map(xAxis, 0, xCenter, 0, 512);
-    if(xAxis>xCenter)  xAxis = map(xAxis, xCenter, 1023, 513, 1023);
+    if(xAxis<=xCenter){
+      xAxis = map(xAxis, 0, xCenter, 0, 512);
+    } 
+    else if(xAxis>xCenter){
+      xAxis = map(xAxis, xCenter, 1023, 513, 1023);
+    }  
   }
   
   if(invertYAxis){
     yAxis = map(yAxis, 0, 1023, 1023, 0);
   }
   if(overwriteYCenter){
-    if(yAxis<=yCenter) yAxis = map(yAxis, 0, yCenter, 0, 512);
-    if(yAxis>yCenter)  yAxis = map(yAxis, yCenter, 1023, 513, 1023);  
+    if(yAxis<=yCenter){
+      yAxis = map(yAxis, 0, yCenter, 0, 512);
+    }
+    else if(yAxis>yCenter){
+      yAxis = map(yAxis, yCenter, 1023, 513, 1023);
+    }  
+  }
+  if((512-deadzone)<=xAxis && 512+deadzone>=xAxis){
+    xAxis=512;  
+  }
+  if((512-deadzone)<=yAxis && 512+deadzone>=yAxis){
+    yAxis=512;  
   }
   // set axis
   Joystick.setXAxis(xAxis);
@@ -208,9 +224,9 @@ void mapDataToArray(){
   int thu2 = msgBuffer.data.thumbHat2_val;
   currentBtnState[4] = (thu2<256);
   thumbHat[2] = (thu2>256 && thu2<600);
-  thumbHat[0] = (thu2>600 && thu2<1000);
+  thumbHat[0] = (thu2>600 && thu2<900);
   thumbHat[3] = (thu1<256);
-  thumbHat[1] = (thu1>256 && thu1<1000);
+  thumbHat[1] = (thu1>256 && thu1<700);
 }
 
 void printAxisState(){
