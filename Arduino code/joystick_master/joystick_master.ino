@@ -20,7 +20,7 @@ const bool invertXAxis = false;
 const bool invertYAxis = false;
 const bool overwriteXCenter = true;
 const bool overwriteYCenter = true;
-const bool invertRxAxis = false;
+const bool invertRxAxis = true;
 const bool invertRyAxis = true;
 
 // I/O actions take quiet long so this should only be enabled during debugging
