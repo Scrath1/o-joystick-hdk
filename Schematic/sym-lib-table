@@ -1,3 +1,5 @@
 (sym_lib_table
   (lib (name "Seeeduino XIAO")(type "Legacy")(uri "${KIPRJMOD}/libs/Seeeduino XIAO KICAD/Seeeduino XIAO.lib")(options "")(descr ""))
+  (lib (name "Alps-SKQU")(type "KiCad")(uri "${KIPRJMOD}/Alps-SKQU.kicad_sym")(options "")(descr ""))
+  (lib (name "Alps-RKJXT1F")(type "KiCad")(uri "${KIPRJMOD}/Alps-RKJXT1F.kicad_sym")(options "")(descr ""))
 )
