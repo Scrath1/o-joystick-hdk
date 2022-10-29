@@ -1,4 +1,5 @@
 (fp_lib_table
   (lib (name "Seeeduino XIAO KICAD")(type "KiCad")(uri "${KIPRJMOD}/libs/Seeeduino XIAO KICAD")(options "")(descr ""))
   (lib (name "Alps-SKQU")(type "KiCad")(uri "${KIPRJMOD}/Alps-SKQU.pretty")(options "")(descr ""))
+  (lib (name "Alps-RKJXV")(type "KiCad")(uri "${KIPRJMOD}/Alps-RKJXV.pretty")(options "")(descr ""))
 )

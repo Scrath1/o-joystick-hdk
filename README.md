@@ -12,7 +12,7 @@ I have also uploaded some arduino code that I will use for my personal build of 
 - 2x 6x6mm tactile push button
 - 1x Seeeduino Xiao Microcontroller
 - 3x [SN74HC165 PiSo Shift Register](./Datasheets/sn74hc165.pdf)
-- 1x Thumbstick (for example one that is typically used in a PS4 controller)
+- 1x [RKJXV122400R ThumbStick](https://tech.alpsalpine.com/e/products/detail/RKJXV122400R/)
 **Other:**
 - 1x Spring 12mm long, 7mm diameter, 0.5mm filament diameter. Can be wider but should not be shorter or longer
 - 1x Spring about 12mm long, 4mm diameter, 0.4mm filament diameter
