@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\tobia\Documents\Gitkraken\o-joystick-hdk\Schematic\Faceplate-PCB\Faceplate-PCB.kicad_sch</source>
+    <date>02.11.2022 19:17:45</date>
+    <tool>Eeschema (6.0.4)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>Faceplate-PCB.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J1">
+      <value>Conn_01x03_Female</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x03_Female" description="Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5a1d1f7b-7dab-4e47-8d23-a8fd8a4bfa17</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_01x04_Female</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x04_Female" description="Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8eabe408-ab41-4b12-833b-ffbc09feed7e</tstamps>
+    </comp>
+    <comp ref="RN1">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_Array_Convex_4x1206</footprint>
+      <libsource lib="Device" part="R_Pack04" description="4 resistor network, parallel topology"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>412d83ba-e00d-4944-ac5f-c776be6bcf14</tstamps>
+    </comp>
+    <comp ref="RN2">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_Array_Convex_4x1206</footprint>
+      <libsource lib="Device" part="R_Pack04" description="4 resistor network, parallel topology"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2506da74-4504-4a8a-8845-952ad3c7bee4</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>SKQUCAA010</value>
+      <footprint>Alps-SKQU:SKQUCAA010</footprint>
+      <libsource lib="Alps-SKQU" part="SKQUCAA010" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2a0c9449-9e6b-4959-9385-41fbb5e2703d</tstamps>
+    </comp>
+    <comp ref="SW2">
+      <value>SKQUCAA010</value>
+      <footprint>Alps-SKQU:SKQUCAA010</footprint>
+      <libsource lib="Alps-SKQU" part="SKQUCAA010" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>081412c6-60dc-47d4-9d4f-1b8ec19aa1f5</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>74HC165</value>
+      <footprint>Package_SO:TSSOP-16_4.4x5mm_P0.65mm</footprint>
+      <datasheet>https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf</datasheet>
+      <libsource lib="74xx" part="74HC165" description="Shift Register, 8-bit, Parallel Load"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Faceplate-PCB.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>84b50013-bdfb-49db-abc6-b3f1faf02330</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="74xx" part="74HC165">
+      <description>Shift Register, 8-bit, Parallel Load</description>
+      <docs>https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf</docs>
+      <footprints>
+        <fp>DIP?16*</fp>
+        <fp>SO*16*3.9x9.9mm*P1.27mm*</fp>
+        <fp>SSOP*16*5.3x6.2mm*P0.65mm*</fp>
+        <fp>TSSOP*16*4.4x5mm*P0.65*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74HC165</field>
+        <field name="Datasheet">https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~{PL}" type="input"/>
+        <pin num="2" name="CP" type="input"/>
+        <pin num="3" name="D4" type="input"/>
+        <pin num="4" name="D5" type="input"/>
+        <pin num="5" name="D6" type="input"/>
+        <pin num="6" name="D7" type="input"/>
+        <pin num="7" name="~{Q7}" type="output"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="Q7" type="output"/>
+        <pin num="10" name="DS" type="input"/>
+        <pin num="11" name="D0" type="input"/>
+        <pin num="12" name="D1" type="input"/>
+        <pin num="13" name="D2" type="input"/>
+        <pin num="14" name="D3" type="input"/>
+        <pin num="15" name="~{CE}" type="input"/>
+        <pin num="16" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Alps-SKQU" part="SKQUCAA010">
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SKQUCAA010</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A_Up" type="bidirectional"/>
+        <pin num="2" name="B_Left" type="bidirectional"/>
+        <pin num="3" name="C_Down" type="bidirectional"/>
+        <pin num="4" name="Com" type="bidirectional"/>
+        <pin num="5" name="D_Right" type="bidirectional"/>
+        <pin num="6" name="Center" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x03_Female">
+      <description>Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x03_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x04_Female">
+      <description>Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04_Female</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Pack04">
+      <description>4 resistor network, parallel topology</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>DIP*</fp>
+        <fp>SOIC*</fp>
+        <fp>R*Array*Concave*</fp>
+        <fp>R*Array*Convex*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">RN</field>
+        <field name="Value">R_Pack04</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="R1.1" type="passive"/>
+        <pin num="2" name="R2.1" type="passive"/>
+        <pin num="3" name="R3.1" type="passive"/>
+        <pin num="4" name="R4.1" type="passive"/>
+        <pin num="5" name="R4.2" type="passive"/>
+        <pin num="6" name="R3.2" type="passive"/>
+        <pin num="7" name="R2.2" type="passive"/>
+        <pin num="8" name="R1.2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="74xx">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/74xx.kicad_sym</uri>
+    </library>
+    <library logical="Alps-SKQU">
+      <uri>C:\Users\tobia\Documents\Gitkraken\o-joystick-hdk\Schematic\Faceplate-PCB/Alps-SKQU.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+5V">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="SW1" pin="4" pinfunction="Com" pintype="bidirectional"/>
+      <node ref="SW2" pin="4" pinfunction="Com" pintype="bidirectional"/>
+      <node ref="U1" pin="16" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="2" name="/HAT1_PUSH">
+      <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="SW1" pin="6" pinfunction="Center" pintype="bidirectional"/>
+    </net>
+    <net code="3" name="/HAT2_PUSH">
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="SW2" pin="6" pinfunction="Center" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/SH_CLK">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="CP" pintype="input"/>
+    </net>
+    <net code="5" name="/SH_DATA1">
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U1" pin="9" pinfunction="Q7" pintype="output"/>
+    </net>
+    <net code="6" name="/SH_LATCH">
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="~{PL}" pintype="input"/>
+    </net>
+    <net code="7" name="GND">
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="RN1" pin="5" pinfunction="R4.2" pintype="passive"/>
+      <node ref="RN1" pin="6" pinfunction="R3.2" pintype="passive"/>
+      <node ref="RN1" pin="7" pinfunction="R2.2" pintype="passive"/>
+      <node ref="RN1" pin="8" pinfunction="R1.2" pintype="passive"/>
+      <node ref="RN2" pin="1" pinfunction="R1.1" pintype="passive"/>
+      <node ref="RN2" pin="2" pinfunction="R2.1" pintype="passive"/>
+      <node ref="RN2" pin="3" pinfunction="R3.1" pintype="passive"/>
+      <node ref="RN2" pin="4" pinfunction="R4.1" pintype="passive"/>
+      <node ref="U1" pin="10" pinfunction="DS" pintype="input"/>
+      <node ref="U1" pin="15" pinfunction="~{CE}" pintype="input"/>
+      <node ref="U1" pin="8" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="8" name="Net-(RN1-Pad1)">
+      <node ref="RN1" pin="1" pinfunction="R1.1" pintype="passive"/>
+      <node ref="SW1" pin="5" pinfunction="D_Right" pintype="bidirectional"/>
+      <node ref="U1" pin="11" pinfunction="D0" pintype="input"/>
+    </net>
+    <net code="9" name="Net-(RN1-Pad2)">
+      <node ref="RN1" pin="2" pinfunction="R2.1" pintype="passive"/>
+      <node ref="SW1" pin="3" pinfunction="C_Down" pintype="bidirectional"/>
+      <node ref="U1" pin="12" pinfunction="D1" pintype="input"/>
+    </net>
+    <net code="10" name="Net-(RN1-Pad3)">
+      <node ref="RN1" pin="3" pinfunction="R3.1" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="B_Left" pintype="bidirectional"/>
+      <node ref="U1" pin="13" pinfunction="D2" pintype="input"/>
+    </net>
+    <net code="11" name="Net-(RN1-Pad4)">
+      <node ref="RN1" pin="4" pinfunction="R4.1" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="A_Up" pintype="bidirectional"/>
+      <node ref="U1" pin="14" pinfunction="D3" pintype="input"/>
+    </net>
+    <net code="12" name="Net-(SW2-Pad1)">
+      <node ref="RN2" pin="8" pinfunction="R1.2" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="A_Up" pintype="bidirectional"/>
+      <node ref="U1" pin="6" pinfunction="D7" pintype="input"/>
+    </net>
+    <net code="13" name="Net-(SW2-Pad2)">
+      <node ref="RN2" pin="7" pinfunction="R2.2" pintype="passive"/>
+      <node ref="SW2" pin="2" pinfunction="B_Left" pintype="bidirectional"/>
+      <node ref="U1" pin="5" pinfunction="D6" pintype="input"/>
+    </net>
+    <net code="14" name="Net-(SW2-Pad3)">
+      <node ref="RN2" pin="6" pinfunction="R3.2" pintype="passive"/>
+      <node ref="SW2" pin="3" pinfunction="C_Down" pintype="bidirectional"/>
+      <node ref="U1" pin="4" pinfunction="D5" pintype="input"/>
+    </net>
+    <net code="15" name="Net-(SW2-Pad5)">
+      <node ref="RN2" pin="5" pinfunction="R4.2" pintype="passive"/>
+      <node ref="SW2" pin="5" pinfunction="D_Right" pintype="bidirectional"/>
+      <node ref="U1" pin="3" pinfunction="D4" pintype="input"/>
+    </net>
+    <net code="16" name="unconnected-(U1-Pad7)">
+      <node ref="U1" pin="7" pinfunction="~{Q7}" pintype="output"/>
+    </net>
+  </nets>
+</export>

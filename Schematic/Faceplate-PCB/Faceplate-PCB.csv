@@ -1,0 +1,27 @@
+"Source:","C:\Users\tobia\Documents\Gitkraken\o-joystick-hdk\Schematic\Faceplate-PCB\Faceplate-PCB.kicad_sch"
+"Date:","02.11.2022 19:17:45"
+"Tool:","Eeschema (6.0.4)"
+"Generator:","C:\Program Files\KiCad\6.0\bin\scripting\plugins/bom_csv_grouped_by_value.py"
+"Component Count:","7"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet"
+"","","J1","Conn_01x03_Female","Connector:Conn_01x03_Female","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~"
+"","","J2","Conn_01x04_Female","Connector:Conn_01x04_Female","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","~"
+"","","RN1","1k","Device:R_Pack04","Resistor_SMD:R_Array_Convex_4x1206","~"
+"","","RN2","1k","Device:R_Pack04","Resistor_SMD:R_Array_Convex_4x1206","~"
+"","","SW1","SKQUCAA010","Alps-SKQU:SKQUCAA010","Alps-SKQU:SKQUCAA010",""
+"","","SW2","SKQUCAA010","Alps-SKQU:SKQUCAA010","Alps-SKQU:SKQUCAA010",""
+"","","U1","74HC165","74xx:74HC165","Package_SO:TSSOP-16_4.4x5mm_P0.65mm","https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf"
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet"
+"1","1","J1","Conn_01x03_Female","Connector:Conn_01x03_Female","Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical","~"
+"2","1","J2","Conn_01x04_Female","Connector:Conn_01x04_Female","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","~"
+"3","2","RN1, RN2","1k","Device:R_Pack04","Resistor_SMD:R_Array_Convex_4x1206","~"
+"4","2","SW1, SW2","SKQUCAA010","Alps-SKQU:SKQUCAA010","Alps-SKQU:SKQUCAA010",""
+"5","1","U1","74HC165","74xx:74HC165","Package_SO:TSSOP-16_4.4x5mm_P0.65mm","https://assets.nexperia.com/documents/data-sheet/74HC_HCT165.pdf"
